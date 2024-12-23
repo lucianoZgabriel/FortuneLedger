@@ -37,7 +37,11 @@ contract Raffle is VRFConsumerBaseV2Plus {
     error Raffle__TransferFailed();
     error Raffle__TooEarly();
     error Raffle__RaffleNotOpen();
-    error Raffle__UpkeepNotNeeded(uint256 balance, uint256 playersLength, uint256 raffleState);
+    error Raffle__UpkeepNotNeeded(
+        uint256 balance,
+        uint256 playersLength,
+        uint256 raffleState
+    );
 
     /* Type declarations */
     enum RaffleState {
@@ -103,11 +107,7 @@ contract Raffle is VRFConsumerBaseV2Plus {
      */
     function checkUpkeep(
         bytes memory /* checkData */
-    )
-        public
-        view
-        returns (bool upkeepNeeded, bytes memory /* performData */)
-    {
+    ) public view returns (bool upkeepNeeded, bytes memory /* performData */) {
         bool isOpen = s_raffleState == RaffleState.OPEN;
         bool timePassed = ((block.timestamp - s_lastTimeStamp) > i_interval);
         bool hasPlayers = s_players.length > 0;
@@ -119,7 +119,11 @@ contract Raffle is VRFConsumerBaseV2Plus {
     function performUpkeep(bytes calldata /* performData */) external {
         (bool upkeepNeeded, ) = checkUpkeep("");
         if (!upkeepNeeded) {
-            revert Raffle__UpkeepNotNeeded(address(this).balance, s_players.length, uint256(s_raffleState));
+            revert Raffle__UpkeepNotNeeded(
+                address(this).balance,
+                s_players.length,
+                uint256(s_raffleState)
+            );
         }
         if (block.timestamp < s_lastTimeStamp + i_interval) {
             revert Raffle__TooEarly();
@@ -163,5 +167,13 @@ contract Raffle is VRFConsumerBaseV2Plus {
      */
     function getEntranceFee() external view returns (uint256) {
         return i_entranceFee;
+    }
+
+    function getRaffleState() external view returns (RaffleState) {
+        return s_raffleState;
+    }
+
+    function getPlayer(uint256 index) external view returns (address) {
+        return s_players[index];
     }
 }
