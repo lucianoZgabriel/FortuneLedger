@@ -26,6 +26,7 @@ contract HelperConfig is Script, CodeConstants {
         uint32 callbackGasLimit;
         uint256 subscriptionId;
         address link;
+        address account;
     }
 
     error HelperConfig__InvalidChainId();
@@ -63,7 +64,8 @@ contract HelperConfig is Script, CodeConstants {
                 gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
                 callbackGasLimit: 500000,
                 subscriptionId: 78309344398676149754692057270621834670045939463096817443911537204230898321801,
-                link: 0x779877A7B0D9E8603169DdbD7836e478b4624789
+                link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
+                account: 0xFb3dBe5fBBF1E62400723a84767A00340Bfc17bF
             });
     }
 
@@ -76,7 +78,8 @@ contract HelperConfig is Script, CodeConstants {
                 gasLane: 0x8596b430971ac45bdf6088665b9ad8e8630c9d5049ab54b14dff711bee7c0e26,
                 callbackGasLimit: 500000,
                 subscriptionId: 9199851725701167829067919677381230850624786349351054975011901873904082779244,
-                link: 0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06
+                link: 0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06,
+                account: 0xFb3dBe5fBBF1E62400723a84767A00340Bfc17bF
             });
     }
 
@@ -103,7 +106,8 @@ contract HelperConfig is Script, CodeConstants {
             ),
             callbackGasLimit: 500000,
             subscriptionId: 0,
-            link: address(linkToken)
+            link: address(linkToken),
+            account: 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38
         });
 
         return localNetworkConfig;
