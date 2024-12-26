@@ -10,3 +10,6 @@ install:; forge install cyfrin/foundry-devops@0.2.2 --no-commit && forge install
 
 deploy-bsc:
 	@forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url $(BSC_RPC_URL) --account metamask --broadcast --verify --etherscan-api-key $(BSC_API_KEY) -vvvv 
+
+deploy-bsc-private-key:
+	@forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url $(BSC_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(BSC_API_KEY) -vvvv 
