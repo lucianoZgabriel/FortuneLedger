@@ -4,8 +4,6 @@ A decentralized and verifiably random raffle system built with Solidity and Chai
 
 # Table of Contents
 
-- [Chainlink VRF Raffle Smart Contract](#chainlink-vrf-raffle-smart-contract)
-- [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
   - [Prerequisites](#prerequisites)
